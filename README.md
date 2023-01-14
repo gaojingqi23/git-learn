@@ -5,11 +5,14 @@ git 和 github 学习用
 ## Git 学习进度
 
 - [Git Book](https://git-scm.com/book/zh/v2)
-- 2.3 Git 基础 - 查看提交历史
+- [2.7 Git 基础 - Git 别名](https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-Git-%E5%88%AB%E5%90%8D)
 -
 
 ## Git 常用命令
 
+- 列出所有 Git 当时能找到的配置：git config --list
+- 查看所有的配置以及它们所在的文件：git config --list --show-origin
+- 全局配置：git config --global ...
 - 查看文件状态：git status
 - 简短查看文件状态：git status -s / git status --short
 - 查看尚未暂存的文件更新了哪些部分：git diff
@@ -61,12 +64,12 @@ git 和 github 学习用
 | --pretty        | 使用其他格式显示历史提交信息, 可用的选项包括 oneline、short、full、fuller 和 format（用来定义自己的格式） |
 | --oneline       | --pretty=oneline --abbrev-commit 合用的简写                                                               |
 
-- 限制输出长度：git log -<n>
+- 限制输出长度：git log -\<n>
 - 按时间限制：git log --since/--untils
 - 显示指定作者的提交：git log --author
 - 搜索提交说明中的关键字：git log --grep
 - 显示那些添加或删除了指定字符串的提交：git log -s <string>
-- 指定路径（放在最后位置并用--隔开）：git log -- <path>
+- 指定路径（放在最后位置并用--隔开）：git log -- \<path>
 - **限制 git log 输出的选项**
 
   | 选项             | 说明                                     |
@@ -84,12 +87,36 @@ git 和 github 学习用
 - 取消暂存的文件：git restore --staged \<file>...
 - 撤销对文件的修改（用最近提交的版本覆盖掉它,**在 Git 中，已提交的东西总是可以恢复的**）：git restore \<file>...
 - 查看远程仓库：git remote / git remote -v
+- 详细查看远程仓库信息：git remote show \<remote-name>
 - 添加远程仓库：git remote add \<shortname> \<url>
 - 从远程仓库抓取上一次抓取后新推送的所有工作（不会自动合并）：git fetch \<remote>
 - 从远程仓库抓取并自动合并到当前分支（前提是设置了跟踪远程分支）：git pull \<remote>
+- 远程仓库重命名：git remote rename \<src-name> \<dst-name>
+- 远程仓库移除：git remote remove \<name>
+- 列出标签：git tag
+- （按通配符）查找标签：git tag -l/--list \<通配符>
+- 创建附注标签（annotated）：git tag -a \<tagname> -m \<tag description>
+- 查看标签信息和与之对应的提交信息：git show \<tagname>
+- 轻量标签（lightweight）：git tag \<tagname>
+- 给某个 commit 打标签：git tag -a \<tagname> \<commit id>
+- 共享标签（推送标签到远程服务器上）：git push \<remote> \<tagname>
+- 一次性推送多个标签：git push \<remote> --tags
+- 本地删除标签：git tag -d \<tagname>
+- 远程移除标签：git push \<remote> --delete <tagname> / git push \<remote> :refs/tags/\<tagname>
+- 查看某个标签所指向的文件版本(会使你的仓库处于“分离头指针（detached HEAD）”的状态——这个状态有些不好的副作用)：git check \<tagname>
 
 ## Git 常见问题
 
 ### git status 中文输出有误
 
 A: git config core.quotepath false
+
+## 杂项
+
+### [PR 之优雅修正 Review 意见](https://club.rt-thread.org/ask/article/e19f1f0f77fbd119.html)
+
+如何修正 Review 意见，以及修正后如何让你的提交信息保持优雅（只是一个而不是多个）：
+
+1. 如何将本地仓设置两个 remote？（一个上游仓 URL upstream，一个个人仓 URL personal），以及如何在本地同步自己的个人仓（学会 git rebase 之类的操作）；
+2. PR 发出后修正 Review 意见后，用 git commit --amend 将少量修改合并到此前的提交记录中；
+3. 修正 Review 意见后，用 git push personal master --force 强制推送到个人仓（覆盖掉个人仓最新的提交记录）；
