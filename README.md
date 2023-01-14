@@ -28,22 +28,23 @@ git 和 github 学习用
 - 将每个提交简短显示：git log --pretty=oneline/short/full/fuller
 - 定制提交记录的显示格式：git log --pretty=format:"%h - %an, %ar : %s"
 - git log --pretty=format 常用的选项
-  选项 说明
-  %H 提交的完整哈希值
-  %h 提交的简写哈希值
-  %T 树的完整哈希值
-  %t 树的简写哈希值
-  %P 父提交的完整哈希值
-  %p 父提交的简写哈希值
-  %an 作者名字
-  %ae 作者的电子邮件地址
-  %ad 作者修订日期（可以用 --date=选项 来定制格式）
-  %ar 作者修订日期，按多久以前的方式显示
-  %cn 提交者的名字
-  %ce 提交者的电子邮件地址
-  %cd 提交日期
-  %cr 提交日期（距今多长时间）
-  %s 提交说明
+  |选项 |说明|
+  |---|---|
+  |%H |提交的完整哈希值|
+  |%h |提交的简写哈希值|
+  |%T |树的完整哈希值|
+  |%t |树的简写哈希值|
+  |%P |父提交的完整哈希值|
+  |%p |父提交的简写哈希值|
+  |%an| 作者名字|
+  |%ae| 作者的电子邮件地址|
+  |%ad| 作者修订日期（可以用 --date=选项 来定制格式）|
+  |%ar| 作者修订日期，按多久以前的方式显示|
+  |%cn| 提交者的名字|
+  |%ce| 提交者的电子邮件地址|
+  |%cd| 提交日期|
+  |%cr| 提交日期（距今多长时间）|
+  |%s |提交说明|
 - 形象地展示你的分支、合并历史:git log --pretty=oneline --graph
 - **git log 的常用选项**
 
@@ -65,7 +66,7 @@ git 和 github 学习用
 - 显示指定作者的提交：git log --author
 - 搜索提交说明中的关键字：git log --grep
 - 显示那些添加或删除了指定字符串的提交：git log -s <string>
-- 指定路径（放在最后位置并用--隔开）：git log --<path>
+- 指定路径（放在最后位置并用--隔开）：git log -- <path>
 - **限制 git log 输出的选项**
 
   | 选项             | 说明                                     |
@@ -79,8 +80,16 @@ git 和 github 学习用
   | -S               | 仅显示添加或删除内容匹配指定字符串的提交 |
 
 - 隐藏合并提交:git log --no-merges
-- 重新提交并保留上次提交信息：git commit --amend
+- 重新提交并保留上次提交信息(非常好用)：**git commit --amend**
+- 取消暂存的文件：git restore --staged \<file>...
+- 撤销对文件的修改（用最近提交的版本覆盖掉它,**在 Git 中，已提交的东西总是可以恢复的**）：git restore \<file>...
+- 查看远程仓库：git remote / git remote -v
+- 添加远程仓库：git remote add \<shortname> \<url>
+- 从远程仓库抓取上一次抓取后新推送的所有工作（不会自动合并）：git fetch \<remote>
+- 从远程仓库抓取并自动合并到当前分支（前提是设置了跟踪远程分支）：git pull \<remote>
 
-## Vim 常用操作
+## Git 常见问题
 
-- 从系统剪切板黏贴到 Vim:
+### git status 中文输出有误
+
+A: git config core.quotepath false
