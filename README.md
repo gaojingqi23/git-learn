@@ -117,6 +117,12 @@ git 和 github 学习用
   | git config --global alias.visual '!gitk'                                                          | 可视化   |
   | git config --global alias.lg "log --pretty=format:'%Cred%h%Creset - %s %Cgreen(%ar) %Cblue<%an>'" | 实用 log |
 
+  - 创建一个分支：git branch \<brance-name>
+  - 查看各个分支当前所指的对象：git log --oneline --decorate
+  - 切换分支：git check \<branch-name>
+  - 创建并切换至新分支：git checkout -b \<newbranchname>
+  - 查看分叉历史：git log --oneline --decorate --graph --all
+
 ## Git 常见问题
 
 ### git status 中文输出有误
