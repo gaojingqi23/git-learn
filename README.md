@@ -104,6 +104,18 @@ git 和 github 学习用
 - 本地删除标签：git tag -d \<tagname>
 - 远程移除标签：git push \<remote> --delete <tagname> / git push \<remote> :refs/tags/\<tagname>
 - 查看某个标签所指向的文件版本(会使你的仓库处于“分离头指针（detached HEAD）”的状态——这个状态有些不好的副作用)：git check \<tagname>
+- **Git 别名例子**
+
+  | 命令                                                                                              | 备注     |
+  | ------------------------------------------------------------------------------------------------- | -------- |
+  | git config --global alias.co checkout                                                             |          |
+  | git config --global alias.br branch                                                               |          |
+  | git config --global alias.ci commit                                                               |          |
+  | git config --global alias.st status                                                               |          |
+  | git config --global alias.unstage 'reset HEAD --'                                                 |          |
+  | git config --global alias.last 'log -1 HEAD'                                                      |          |
+  | git config --global alias.visual '!gitk'                                                          | 可视化   |
+  | git config --global alias.lg "log --pretty=format:'%Cred%h%Creset - %s %Cgreen(%ar) %Cblue<%an>'" | 实用 log |
 
 ## Git 常见问题
 
@@ -120,3 +132,11 @@ A: git config core.quotepath false
 1. 如何将本地仓设置两个 remote？（一个上游仓 URL upstream，一个个人仓 URL personal），以及如何在本地同步自己的个人仓（学会 git rebase 之类的操作）；
 2. PR 发出后修正 Review 意见后，用 git commit --amend 将少量修改合并到此前的提交记录中；
 3. 修正 Review 意见后，用 git push personal master --force 强制推送到个人仓（覆盖掉个人仓最新的提交记录）；
+
+### Git 恢复至某个提交
+
+git reset --hard commit-id (不可撤销)
+
+### 强制推送
+
+git push --force
