@@ -8,3 +8,5 @@
 -S 仅显示添加或删除内容匹配指定字符串的提交。
 
 ## git commit --amend 测试
+
+## master change
