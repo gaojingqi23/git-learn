@@ -9,7 +9,7 @@ git 和 github 学习用
 - [ ] [10.7 git 内部原理 - 维护与数据恢复](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D#_data_recovery)
 - [ ] [7.7 git 工具 - 重置揭密](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86#_git_reset)
 - [x] [7.3 git 工具 - 贮藏与清理](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E8%B4%AE%E8%97%8F%E4%B8%8E%E6%B8%85%E7%90%86)
-- [ ] [Git - 子模块](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97)
+- [x] [Git - 子模块](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97)
 
 ## Git 常用命令
 
@@ -38,23 +38,23 @@ git 和 github 学习用
 - 定制提交记录的显示格式：git log --pretty=format:"%h - %an, %ar : %s"
 - git log --pretty=format 常用的选项
 
-  | 选项 | 说明                                          |
-  | ---- | --------------------------------------------- |
-  | %H   | 提交的完整哈希值                              |
-  | %h   | 提交的简写哈希值                              |
-  | %T   | 树的完整哈希值                                |
-  | %t   | 树的简写哈希值                                |
-  | %P   | 父提交的完整哈希值                            |
-  | %p   | 父提交的简写哈希值                            |
-  | %an  | 作者名字                                      |
-  | %ae  | 作者的电子邮件地址                            |
-  | %ad  | 作者修订日期（可以用 --date=选项 来定制格式） |
-  | %ar  | 作者修订日期，按多久以前的方式显示            |
-  | %cn  | 提交者的名字                                  |
-  | %ce  | 提交者的电子邮件地址                          |
-  | %cd  | 提交日期                                      |
-  | %cr  | 提交日期（距今多长时间）                      |
-  | %s   | 提交说明                                      |
+| 选项 | 说明                                          |
+| ---- | --------------------------------------------- |
+| %H   | 提交的完整哈希值                              |
+| %h   | 提交的简写哈希值                              |
+| %T   | 树的完整哈希值                                |
+| %t   | 树的简写哈希值                                |
+| %P   | 父提交的完整哈希值                            |
+| %p   | 父提交的简写哈希值                            |
+| %an  | 作者名字                                      |
+| %ae  | 作者的电子邮件地址                            |
+| %ad  | 作者修订日期（可以用 --date=选项 来定制格式） |
+| %ar  | 作者修订日期，按多久以前的方式显示            |
+| %cn  | 提交者的名字                                  |
+| %ce  | 提交者的电子邮件地址                          |
+| %cd  | 提交日期                                      |
+| %cr  | 提交日期（距今多长时间）                      |
+| %s   | 提交说明                                      |
 
 - 形象地展示你的分支、合并历史:git log --pretty=oneline --graph
 - **git log 的常用选项**
@@ -76,19 +76,19 @@ git 和 github 学习用
 - 按时间限制：git log --since/--untils
 - 显示指定作者的提交：git log --author
 - 搜索提交说明中的关键字：git log --grep
-- 显示那些添加或删除了指定字符串的提交：git log -s <string>
+- 显示那些添加或删除了指定字符串的提交：git log -s \<string>
 - 指定路径（放在最后位置并用--隔开）：git log -- \<path>
 - **限制 git log 输出的选项**
 
-  | 选项             | 说明                                     |
-  | ---------------- | ---------------------------------------- |
-  | -\<n>            | 仅显示最近的 n 条提交                    |
-  | --since,--after  | 仅显示指定时间之后的提交                 |
-  | --until,--before | 仅显示指定时间之前的提交                 |
-  | --author         | 仅显示作者匹配指定字符串的提交           |
-  | --committer      | 仅显示提交者匹配指定字符串的提交         |
-  | --grep           | 仅显示提交说明中包含指定字符串的提交     |
-  | -S               | 仅显示添加或删除内容匹配指定字符串的提交 |
+| 选项             | 说明                                     |
+| ---------------- | ---------------------------------------- |
+| -\<n>             | 仅显示最近的 n 条提交                    |
+| --since,--after  | 仅显示指定时间之后的提交                 |
+| --until,--before | 仅显示指定时间之前的提交                 |
+| --author         | 仅显示作者匹配指定字符串的提交           |
+| --committer      | 仅显示提交者匹配指定字符串的提交         |
+| --grep           | 仅显示提交说明中包含指定字符串的提交     |
+| -S               | 仅显示添加或删除内容匹配指定字符串的提交 |
 
 - 隐藏合并提交:git log --no-merges
 - 重新提交并保留上次提交信息(用一个新的提交替换旧的提交)(非常好用)：**git commit --amend**
@@ -113,20 +113,20 @@ git 和 github 学习用
 - 共享标签（推送标签到远程服务器上）：git push \<remote> \<tagname>
 - 一次性推送多个标签：git push \<remote> --tags
 - 本地删除标签：git tag -d \<tagname>
-- 远程移除标签：git push \<remote> --delete <tagname> / git push \<remote> :refs/tags/\<tagname>
+- 远程移除标签：git push \<remote> --delete \<tagname> / git push \<remote> :refs/tags/\<tagname>
 - 查看某个标签所指向的文件版本(会使你的仓库处于“分离头指针（detached HEAD）”的状态——这个状态有些不好的副作用)：git check \<tagname>
 - **Git 别名例子**
 
-  | 命令                                                                                              | 备注     |
-  | ------------------------------------------------------------------------------------------------- | -------- |
-  | git config --global alias.co checkout                                                             |          |
-  | git config --global alias.br branch                                                               |          |
-  | git config --global alias.ci commit                                                               |          |
-  | git config --global alias.st status                                                               |          |
-  | git config --global alias.unstage 'reset HEAD --'                                                 |          |
-  | git config --global alias.last 'log -1 HEAD'                                                      |          |
-  | git config --global alias.visual '!gitk'                                                          | 可视化   |
-  | git config --global alias.lg "log --pretty=format:'%Cred%h%Creset - %s %Cgreen(%ar) %Cblue<%an>'" | 实用 log |
+| 命令                                                                                              | 备注     |
+| ------------------------------------------------------------------------------------------------- | -------- |
+| git config --global alias.co checkout                                                             |          |
+| git config --global alias.br branch                                                               |          |
+| git config --global alias.ci commit                                                               |          |
+| git config --global alias.st status                                                               |          |
+| git config --global alias.unstage 'reset HEAD --'                                                 |          |
+| git config --global alias.last 'log -1 HEAD'                                                      |          |
+| git config --global alias.visual '!gitk'                                                          | 可视化   |
+| git config --global alias.lg "log --pretty=format:'%Cred%h%Creset - %s %Cgreen(%ar) %Cblue<%an>'" | 实用 log |
 
 ### 分支
 
@@ -145,8 +145,8 @@ git 和 github 学习用
 - 解决合并冲突后完成合并提交：git commit
 - 查看当前所有分支：git branch
 - 查看每一个分支的最后一次提交：git branch -v
-- 查看哪些分支已经合并到当前分支：git branch --merged /<branch-name>(默认当前分支)
-- 查看所有包含未合并工作的分支：git branch --no-merged /<branch-name>(默认当前分支)
+- 查看哪些分支已经合并到当前分支：git branch --merged \<branch-name>(默认当前分支)
+- 查看所有包含未合并工作的分支：git branch --no-merged \<branch-name>(默认当前分支)
 - 将分支 b1 的修改变基到 b2 上（首先切换到 b1 分支）：git rebase b2
 - 取出 b2 基于 b1 的修改编辑在 master 上(当前在 b1)：git rebase --onto master b1 b2
 
@@ -156,7 +156,7 @@ git 和 github 学习用
 - 获得远程分支的更多信息：it remote show \<remote>
 - 修改（默认 origin） git clone 时默认的远程仓库名字：git clone -o \<newname>
 - 与给定的远程仓库同步数据：git fetch \<remote>
-- 推送本地分支至远程仓库的分支：git push \<remote> \<branch> / git push \<remote> \<localbranch>:<remotebranch>
+- 推送本地分支至远程仓库的分支：git push \<remote> \<branch> / git push \<remote> \<localbranch>:\<remotebranch>
 - 合并远程分支到当前所在的分支：git merge \<remote>/\<branch>
 - 建立本地分支并跟踪远程分支：git checkout -b \<localbranch> \<remote>/\<branch>
 - 设置跟踪分支：git checkout --track \<remote>/\<branch>
@@ -188,6 +188,43 @@ git 和 github 学习用
 - 安全移除（移除每一样东西并存放在栈中）：git stash --all
 
 ### 子模块
+
+- 为已有的仓库添加子模块：git submodule add \<remote> \<diectory>（默认仓库同名目录）
+- 查看子模块差异：git diff --submodule
+-  克隆含有子模块的项目（默认包含子模块空目录）：
+	1. 手动抓取子模块数据：
+		- 初始化本地配置文件：git submodule init
+		- 抓取所有数据并检出父项目中列出的合适的提交：git submodule update
+		- 或者合并成一步：git submodule update --init
+		- 或者递归：git submodule update --init --recursive
+	2.  自动初始化并更新仓库中的每一个子模块， 包括可能存在的嵌套子模块
+		- git clone --recurse-submodules \<remote>
+- 主仓库查看子模块状态：git diff --submodule
+- 不想每次运行 git diff 时都输入 --submodle：git config --global diff.submodule log
+- 抓取子模块数据并更新
+	- 进入子模块正常抓取：git fetch; git merge; / git pull
+	- 在主仓库抓取子模块并更新：git submodule update  --remote \<submodule>(默认所有子模块)
+		- 默认子仓库的master分支，可以更改分支：git config -f .gitmodules submodule.\<subname>.branch \<otherbranch>
+-  拉取并更新子模块：
+	- 在主仓库目录下`git pull`只会拉取所有子模楷块不会自动合并，需要`git submodule update`(如果是刚添加的子模块，还要加上`--init`,如果有嵌套子模块，`--recursive`)
+	- 自动拉取并更新所有子模块 `git pull --recurse-submodules`
+	- 让Git总是以 --recurse-submodules 拉取：git config submodule.recurse true (此选项会让 Git 为所有支持 --recurse-submodules 的命令使用该选项（除 clone 以外）)
+	- 在主仓库拉取并更新子模块后子模块会处于*游离的HEAD状态*，需要进入子模块目录checkout并merge,更高效的方式是`git submodule update --remote --merge/--rebase`
+-  推送子模块改动
+	- 在主仓库git push不会提交子模块，两个办法
+		1. push前检查每个子模块的改动是否已推送，然受手动进入每个子目录并暂存提交推送：git push --submodules=check
+			- 设置 git config push.recurseSubmodules check 让它成为默认行为
+		1. push前Git自动进入每个子模块并推送：git push --recurse-submodules=on-demand
+			- 设置 git config push.recurseSubmodules on-demand 让它成为默认行为
+- 子模块遍历：git submodule foreach \<'git cmd'>
+- 子模块有用的别名
+```shell
+git config alias.sdiff '!'"git diff && git submodule foreach 'git diff'"  
+git config alias.spush 'push --recurse-submodules=on-demand'  
+git config alias.supdate 'submodule update --remote --merge'
+```
+- 切换分支
+在一个分支添加子模块后切换会另一分支任然存在一个未被跟踪的子模块目录，可以`git clean -fdx`移除，再次切换回子模块分支时需要`git submodule update --init`重新建立和填充，或者切换分支时`git checkout --recurse --submodules \<subbranch>`
 
 
 ## Git 常见问题
