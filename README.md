@@ -122,11 +122,18 @@ git 和 github 学习用
   - 切换分支：git check \<branch-name>
   - 创建并切换至新分支：git checkout -b \<newbranchname>
   - 删除分支：git branch -d \<branch-name>
+  - 强制删除分支：git branch -D \<branch-name>
   - 合并分支：git merge \<branch-name>
   - 查看分叉历史：git log --oneline --decorate --graph --all
   - 图形化工具解决合并冲突：git mergetool
   - 将冲突标记为已解决：git add
   - 解决合并冲突后完成合并提交：git commit
+  - 查看当前所有分支：git branch
+  - 查看每一个分支的最后一次提交：git branch -v
+  - 查看哪些分支已经合并到当前分支：git branch --merged /<branch-name>(默认当前分支)
+  - 查看所有包含未合并工作的分支：git branch --no-merged /<branch-name>(默认当前分支)
+  - 获得远程引用的完整列表：git ls-remote \<remote>
+  - 获得远程分支的更多信息：it remote show \<remote>
 
 ## Git 常见问题
 
