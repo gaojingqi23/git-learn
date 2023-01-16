@@ -5,12 +5,15 @@ git 和 github 学习用
 ## Git 学习进度
 
 - [Git Book](https://git-scm.com/book/zh/v2)
-- [3.2 Git 分支 - 分支的新建与合并](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6)
+- [3.6 Git 分支 - 变基](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA)
 - [ ] [10.7 git 内部原理 - 维护与数据恢复](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D#_data_recovery)
 - [ ] [7.7 git 工具 - 重置揭密](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86#_git_reset)
-- [ ] [7.3 git 工具 - 贮藏与清理](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E8%B4%AE%E8%97%8F%E4%B8%8E%E6%B8%85%E7%90%86)
+- [x] [7.3 git 工具 - 贮藏与清理](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E8%B4%AE%E8%97%8F%E4%B8%8E%E6%B8%85%E7%90%86)
+- [ ] [Git - 子模块](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97)
 
 ## Git 常用命令
+
+### 基础
 
 - 列出所有 Git 当时能找到的配置：git config --list
 - 查看所有的配置以及它们所在的文件：git config --list --show-origin
@@ -25,6 +28,7 @@ git 和 github 学习用
 - 从工作区删除文件移出跟踪目录：git rm filename
 - 从暂存区删除文件但在工作区保留：git rm --cached filename
 - 强制从暂存区和工作区删除文件：git rm -f filename
+- 递归删除文件夹：git rm -r \<diectory>
 - 移动或重命名文件：git mv src-filename dst-filename
 - 查看提交历史：git log
 - 显示每次提交所引入的差异（按补丁的格式输出）：git log -p/--patch
@@ -33,23 +37,25 @@ git 和 github 学习用
 - 将每个提交简短显示：git log --pretty=oneline/short/full/fuller
 - 定制提交记录的显示格式：git log --pretty=format:"%h - %an, %ar : %s"
 - git log --pretty=format 常用的选项
-  |选项 |说明|
-  |---|---|
-  |%H |提交的完整哈希值|
-  |%h |提交的简写哈希值|
-  |%T |树的完整哈希值|
-  |%t |树的简写哈希值|
-  |%P |父提交的完整哈希值|
-  |%p |父提交的简写哈希值|
-  |%an| 作者名字|
-  |%ae| 作者的电子邮件地址|
-  |%ad| 作者修订日期（可以用 --date=选项 来定制格式）|
-  |%ar| 作者修订日期，按多久以前的方式显示|
-  |%cn| 提交者的名字|
-  |%ce| 提交者的电子邮件地址|
-  |%cd| 提交日期|
-  |%cr| 提交日期（距今多长时间）|
-  |%s |提交说明|
+
+  | 选项 | 说明                                          |
+  | ---- | --------------------------------------------- |
+  | %H   | 提交的完整哈希值                              |
+  | %h   | 提交的简写哈希值                              |
+  | %T   | 树的完整哈希值                                |
+  | %t   | 树的简写哈希值                                |
+  | %P   | 父提交的完整哈希值                            |
+  | %p   | 父提交的简写哈希值                            |
+  | %an  | 作者名字                                      |
+  | %ae  | 作者的电子邮件地址                            |
+  | %ad  | 作者修订日期（可以用 --date=选项 来定制格式） |
+  | %ar  | 作者修订日期，按多久以前的方式显示            |
+  | %cn  | 提交者的名字                                  |
+  | %ce  | 提交者的电子邮件地址                          |
+  | %cd  | 提交日期                                      |
+  | %cr  | 提交日期（距今多长时间）                      |
+  | %s   | 提交说明                                      |
+
 - 形象地展示你的分支、合并历史:git log --pretty=oneline --graph
 - **git log 的常用选项**
 
@@ -95,6 +101,9 @@ git 和 github 学习用
 - 从远程仓库抓取并自动合并到当前分支（前提是设置了跟踪远程分支）：git pull \<remote>
 - 远程仓库重命名：git remote rename \<src-name> \<dst-name>
 - 远程仓库移除：git remote remove \<name>
+
+### 标签
+
 - 列出标签：git tag
 - （按通配符）查找标签：git tag -l/--list \<通配符>
 - 创建附注标签（annotated）：git tag -a \<tagname> -m \<tag description>
@@ -119,29 +128,77 @@ git 和 github 学习用
   | git config --global alias.visual '!gitk'                                                          | 可视化   |
   | git config --global alias.lg "log --pretty=format:'%Cred%h%Creset - %s %Cgreen(%ar) %Cblue<%an>'" | 实用 log |
 
-  - 创建一个分支：git branch \<brance-name>
-  - 查看各个分支当前所指的对象：git log --oneline --decorate
-  - 切换分支：git check \<branch-name>
-  - 创建并切换至新分支：git checkout -b \<newbranchname>
-  - 删除分支：git branch -d \<branch-name>
-  - 强制删除分支：git branch -D \<branch-name>
-  - 合并分支：git merge \<branch-name>
-  - 查看分叉历史：git log --oneline --decorate --graph --all
-  - 图形化工具解决合并冲突：git mergetool
-  - 将冲突标记为已解决：git add
-  - 解决合并冲突后完成合并提交：git commit
-  - 查看当前所有分支：git branch
-  - 查看每一个分支的最后一次提交：git branch -v
-  - 查看哪些分支已经合并到当前分支：git branch --merged /<branch-name>(默认当前分支)
-  - 查看所有包含未合并工作的分支：git branch --no-merged /<branch-name>(默认当前分支)
-  - 获得远程引用的完整列表：git ls-remote \<remote>
-  - 获得远程分支的更多信息：it remote show \<remote>
+### 分支
+
+#### 本地分支
+
+- 创建一个本地分支：git branch \<brance-name>
+- 查看各个分支当前所指的对象：git log --oneline --decorate
+- 切换分支：git checkout \<branch-name>
+- 创建并切换至新分支：git checkout -b \<newbranchname>
+- 删除分支：git branch -d \<branch-name>
+- 强制删除分支：git branch -D \<branch-name>
+- 合并分支：git merge \<branch-name>
+- 查看分叉历史：git log --oneline --decorate --graph --all
+- 图形化工具解决合并冲突：git mergetool
+- 将冲突标记为已解决：git add
+- 解决合并冲突后完成合并提交：git commit
+- 查看当前所有分支：git branch
+- 查看每一个分支的最后一次提交：git branch -v
+- 查看哪些分支已经合并到当前分支：git branch --merged /<branch-name>(默认当前分支)
+- 查看所有包含未合并工作的分支：git branch --no-merged /<branch-name>(默认当前分支)
+- 将分支 b1 的修改变基到 b2 上（首先切换到 b1 分支）：git rebase b2
+- 取出 b2 基于 b1 的修改编辑在 master 上(当前在 b1)：git rebase --onto master b1 b2
+
+#### 远程分支
+
+- 获得远程引用的完整列表：git ls-remote \<remote>
+- 获得远程分支的更多信息：it remote show \<remote>
+- 修改（默认 origin） git clone 时默认的远程仓库名字：git clone -o \<newname>
+- 与给定的远程仓库同步数据：git fetch \<remote>
+- 推送本地分支至远程仓库的分支：git push \<remote> \<branch> / git push \<remote> \<localbranch>:<remotebranch>
+- 合并远程分支到当前所在的分支：git merge \<remote>/\<branch>
+- 建立本地分支并跟踪远程分支：git checkout -b \<localbranch> \<remote>/\<branch>
+- 设置跟踪分支：git checkout --track \<remote>/\<branch>
+- 设置/修改已有的本地分支跟踪一个刚刚拉取下来的远程分支：git branch -u/--set-upstream-to \<remote>/\<branch>
+- 上游快捷方式：@{upstream}/@{u}
+- 列出所有本地分支并包含更多的信息：git branch -vv
+- 抓取所有的远程仓库：git fetch --all
+- 拉取并合并：git pull \<remote>/\<branch>(相当于 git fetch;git merge)
+- 删除远程分支：git push \<remote> --delete \<branch>
+
+### 贮藏与清理
+
+- 处理工作目录的脏的状态(贮藏（stash）,即跟踪文件的修改与暂存的改动,然后将未完成的修改保存到一个栈上)：**git stash / git stash push**
+- 查看贮藏的东西: git stash list
+- 应用贮藏的工作: git stash apply （不指定一个贮藏，Git 认为指定的是最近的贮藏）
+- 尝试重新应用暂存的修改：git stash apply --index
+- 应用贮藏然后立即从栈上扔掉它：**git stash pop**
+- 移除贮藏：git stash drop \<stashname>
+- 贮藏任何未跟踪文件(git stash 只会贮藏已修改和暂存的 已跟踪 文件): git stash -u/--include-untracked
+- 额外包含忽略的文件: git stash -a/--all
+- 交互式地提示哪些改动想要贮藏、哪些改动需要保存在工作目录中: git stash --patch
+- 从贮藏创建一个分支: git stash branch \<new branchname>
+- 从工作目录中移除未被追踪的文件: **git clean**
+- 移除工作目录中所有未追踪的文件以及空的子目录: git clean -f -d
+- 仅提示将要移除什么: git clean -n/--dry-run
+- 移除包含在.gitignore 的忽略文件：git clean -x
+- 交互式移除：git clean -i/interactive
+- (多次)强调移除：git clean -f -f
+- 安全移除（移除每一样东西并存放在栈中）：git stash --all
+
+### 子模块
+
 
 ## Git 常见问题
 
 ### git status 中文输出有误
 
 A: git config core.quotepath false
+
+### Git GUI中文乱码
+1. Edit->options
+2. Change 'UTF-8'
 
 ## 杂项
 
