@@ -132,8 +132,11 @@ git 和 github 学习用
   - 查看每一个分支的最后一次提交：git branch -v
   - 查看哪些分支已经合并到当前分支：git branch --merged /<branch-name>(默认当前分支)
   - 查看所有包含未合并工作的分支：git branch --no-merged /<branch-name>(默认当前分支)
+<<<<<<< HEAD
   - 获得远程引用的完整列表：git ls-remote \<remote>
   - 获得远程分支的更多信息：it remote show \<remote>
+=======
+>>>>>>> a154a63f45d154b104d548e16e9a0d094889d34d
 
 ## Git 常见问题
 
