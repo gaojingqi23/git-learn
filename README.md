@@ -6,7 +6,9 @@ git 和 github 学习用
 
 - [Git Book](https://git-scm.com/book/zh/v2)
 - [3.2 Git 分支 - 分支的新建与合并](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6)
--
+- [ ][10.7 git 内部原理 - 维护与数据恢复](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D#_data_recovery)
+- [ ][7.7 git 工具 - 重置揭密](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E7%BD%AE%E6%8F%AD%E5%AF%86#_git_reset)
+- [ ][7.3 git 工具 - 贮藏与清理](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E8%B4%AE%E8%97%8F%E4%B8%8E%E6%B8%85%E7%90%86)
 
 ## Git 常用命令
 
@@ -20,7 +22,7 @@ git 和 github 学习用
 - 采用默认编辑器提交：git commit / git commit -v
 - 提交信息与命令放在同一行：git commit -m 'your information'
 - 跳过 git add（暂存区）提交：git commit -a
-- 从磁盘删除文件移出跟踪目录：git rm filename
+- 从工作区删除文件移出跟踪目录：git rm filename
 - 从暂存区删除文件但在工作区保留：git rm --cached filename
 - 强制从暂存区和工作区删除文件：git rm -f filename
 - 移动或重命名文件：git mv src-filename dst-filename
@@ -83,7 +85,7 @@ git 和 github 学习用
   | -S               | 仅显示添加或删除内容匹配指定字符串的提交 |
 
 - 隐藏合并提交:git log --no-merges
-- 重新提交并保留上次提交信息(非常好用)：**git commit --amend**
+- 重新提交并保留上次提交信息(用一个新的提交替换旧的提交)(非常好用)：**git commit --amend**
 - 取消暂存的文件：git restore --staged \<file>...
 - 撤销对文件的修改（用最近提交的版本覆盖掉它,**在 Git 中，已提交的东西总是可以恢复的**）：git restore \<file>...
 - 查看远程仓库：git remote / git remote -v
@@ -132,11 +134,8 @@ git 和 github 学习用
   - 查看每一个分支的最后一次提交：git branch -v
   - 查看哪些分支已经合并到当前分支：git branch --merged /<branch-name>(默认当前分支)
   - 查看所有包含未合并工作的分支：git branch --no-merged /<branch-name>(默认当前分支)
-<<<<<<< HEAD
   - 获得远程引用的完整列表：git ls-remote \<remote>
   - 获得远程分支的更多信息：it remote show \<remote>
-=======
->>>>>>> a154a63f45d154b104d548e16e9a0d094889d34d
 
 ## Git 常见问题
 
