@@ -237,6 +237,10 @@ A: git config core.quotepath false
 1. Edit->options
 2. Change 'UTF-8'
 
+### Git SSL验证导致clone失败
+
+`git config --global http.sslverify false`
+
 ## 杂项
 
 ### [PR 之优雅修正 Review 意见](https://club.rt-thread.org/ask/article/e19f1f0f77fbd119.html)
